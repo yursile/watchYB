@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="initial-scale=1, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta charset="utf-8" />
+  <title>搜狐无人机--静舟</title>
+  <link rel="stylesheet" type="text/css" href="/css/style_m.css">
+  <script type="text/javascript" src="/js/zepto.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    var sizeRatio = window.innerWidth / 640;
+    var size = sizeRatio > 0.8 ? 0.8 : sizeRatio;
+    $('body').css('font-size', size * 6.25 + '%');
+    var nWidth = $('.list li').width();
+    $('.list li').height(nWidth*1.5);
+  });
+  </script>
+</head>
+
+<body>
+  <div id="SOHUCS" sid="wrj_596"></div>
+  <script id="changyan_mobile_js" charset="utf-8" type="text/javascript" 
+    src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=cyqemw6s1&conf=prod_0266e33d3f546cb5436a10798e657d97">
+  </script>
+  <script>
+  var disable = 0;
+  function up() {
+    if(disable == 0) {
+      var el = $("#cur_up");
+      var g = el.html().match(/[\w\W]+?(\d+)/);
+      if(g) {
+        n = Number(g[1]) + 1;
+        el.html("<em>目前票数：</em>" + n);
+      }
+      $.get("/api/up/596");
+      disable = 1;
+    }
+  }
+  </script>
+
+  
+  
+  <style>
+  .f-span1{width:45%}
+  .f-span2{width:55%}
+  </style>
+
+  
+  <script>
+  function bind_zan_action() {
+    $(".zan_btn").unbind("click");
+    $(".zan_btn").bind("click", function() {
+      el = $(this).prev();
+      aid = el.attr("aid");
+      if(/\d+/.test(aid)) {
+        el.html((Number(el.text()) + 1));
+      }
+      $(this).unbind("click");
+      $.get("/api/up/" + aid);
+    });
+  }
+  bind_zan_action();
+  
+  </script>
+<script language=JavaScript src="http://js.sohu.com/pv.js"></script>
+<script language="javascript" src="http://js.sohu.com/wrating0820.js"></script>
+<script language="javascript">
+var  _wratingId = null;
+try{
+_wratingId = _getAcc();
+}catch(e){}
+if(_wratingId !=null){
+document.write('<scr'+'ipt type="text/javascript" src="http://sohu.wrating.com/a1.js"></scr'+'ipt>');
+}
+</script>
+<script language="javascript">
+if(_wratingId !=null){
+document.write('<scr'+'ipt type="text/javascript">');
+document.write('var vjAcc="'+_wratingId+'";');
+document.write('var wrUrl="http://sohu.wrating.com/";');
+document.write('try{vjTrack();}catch(e){}');
+document.write('</scr'+'ipt>');
+}
+</script>
+</body>
+</html>
